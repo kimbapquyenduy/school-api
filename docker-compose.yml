@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  school-db:
+    image: postgres:latest
+    ports:
+      - '5434:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: schooldb
+    volumes:
+      - './postgres_data:/var/lib/postgresql/data'
+volumes:
+  postgres_data:
