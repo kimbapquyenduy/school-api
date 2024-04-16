@@ -15,30 +15,35 @@ export class StudentController {
   constructor(private readonly studentService: StudentService) {}
 
   @Post()
-  create(@Body() createStudentDto: Prisma.StudentCreateInput) {
-    return this.studentService.create(createStudentDto);
+  async create(@Body() createStudentDto: Prisma.StudentCreateInput) {
+    const results = await this.studentService.create(createStudentDto);
+    return results;
   }
 
   @Get()
-  findAll() {
-    return this.studentService.findAll();
+  async findAll() {
+    const results = await this.studentService.findAll();
+    return results;
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.studentService.findOne(id);
+  async findOne(@Param('id') id: string) {
+    const result = await this.studentService.findOne(id);
+    return result;
   }
 
   @Patch(':id')
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updateStudentDto: Prisma.StudentUpdateInput,
   ) {
-    return this.studentService.update(id, updateStudentDto);
+    const results = await this.studentService.update(id, updateStudentDto);
+    return results;
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.studentService.remove(id);
+  async remove(@Param('id') id: string) {
+    const results = await this.studentService.remove(id);
+    return results;
   }
 }

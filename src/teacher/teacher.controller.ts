@@ -15,30 +15,35 @@ export class TeacherController {
   constructor(private readonly teacherService: TeacherService) {}
 
   @Post()
-  create(@Body() createTeacherDto: Prisma.TeacherCreateInput) {
-    return this.teacherService.create(createTeacherDto);
+  async create(@Body() createTeacherDto: Prisma.TeacherCreateInput) {
+    const results = await this.teacherService.create(createTeacherDto);
+    return results;
   }
 
   @Get()
-  findAll() {
-    return this.teacherService.findAll();
+  async findAll() {
+    const results = await this.teacherService.findAll();
+    return results;
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.teacherService.findOne(id);
+  async findOne(@Param('id') id: string) {
+    const result = await this.teacherService.findOne(id);
+    return result;
   }
 
   @Patch(':id')
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updateTeacherDto: Prisma.TeacherUpdateInput,
   ) {
-    return this.teacherService.update(id, updateTeacherDto);
+    const results = await this.teacherService.update(id, updateTeacherDto);
+    return results;
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.teacherService.remove(id);
+  async remove(@Param('id') id: string) {
+    const results = await this.teacherService.remove(id);
+    return results;
   }
 }

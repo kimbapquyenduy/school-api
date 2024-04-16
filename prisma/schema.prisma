@@ -27,8 +27,6 @@ model Student {
   teacherId   String    @unique
   createAt    DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  startAt     DateTime
-  endAt       DateTime 
 
 }
 model Teacher {
